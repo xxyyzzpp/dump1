@@ -1,10 +1,41 @@
-import React from "react";
-import { FaGithub, FaTimes, FaExternalLinkAlt, FaCode, FaCalendar, FaTags } from "react-icons/fa";
+import React, { useEffect } from "react";
+import { FaGithub, FaTimes, FaExternalLinkAlt, FaCode, FaCalendar, FaTags, FaBrain } from "react-icons/fa";
 
 const ProjectModal = ({ project, onClose }) => {
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [onClose]);
+
+  // Close modal when clicking outside
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  if (!project) return null;
+
   return (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-br from-dark-900 to-dark-800 border border-dark-600/50 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+    <div 
+      className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4"
+      onClick={handleBackdropClick}
+    >
+      <div className="bg-gradient-to-br from-dark-900 to-dark-800 border border-dark-600/50 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-fade-in-up">
         {/* Header */}
         <div className="relative">
           {/* Background Image */}

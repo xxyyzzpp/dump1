@@ -31,6 +31,12 @@ body {
   line-height: 1.6;
 }
 
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 /* Typography */
 .font-mono {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
@@ -275,4 +281,14 @@ body {
   background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(251, 191, 36, 0.1);
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+}
+
+/* Prevent scroll when modal is open */
+.modal-open {
+  overflow: hidden;
 }
