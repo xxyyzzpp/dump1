@@ -24,17 +24,17 @@
   scroll-behavior: smooth;
 }
 
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--background-dark);
   color: var(--text-primary);
   line-height: 1.6;
-}
-
-/* Prevent horizontal scroll */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
 }
 
 /* Typography */
@@ -183,7 +183,13 @@ html, body {
 .container-custom {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding: 0 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -317,4 +323,38 @@ html, body {
 /* Prevent scroll when modal is open */
 .modal-open {
   overflow: hidden;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .container-custom {
+    padding: 0 1rem;
+  }
+  
+  /* Ensure mobile menu doesn't overflow */
+  .mobile-menu {
+    max-width: calc(100vw - 2rem);
+  }
+  
+  /* Better mobile spacing */
+  .mobile-spacing {
+    padding-top: 6rem;
+  }
+}
+
+/* Prevent layout shift on mobile */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
 }

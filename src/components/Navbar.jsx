@@ -60,8 +60,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? "backdrop-blur-glass border-b border-dark-700 py-4" 
-          : "bg-transparent py-6"
+          ? "backdrop-blur-glass border-b border-dark-700 py-3 lg:py-4" 
+          : "bg-transparent py-4 lg:py-6"
       }`}
     >
       <div className="container-custom">
@@ -70,15 +70,15 @@ const Navbar = () => {
           <Link 
             to="/" 
             onClick={handleNavClick}
-            className="text-2xl md:text-3xl font-bold text-white font-mono tracking-tight hover:text-primary-400 transition-colors duration-300"
+            className="text-xl md:text-2xl lg:text-3xl font-bold text-white font-mono tracking-tight hover:text-primary-400 transition-colors duration-300"
           >
-            <span className="text-primary-400">&lt;</span>
+            <span className="text-primary-400"><</span>
             Rheisan
-            <span className="text-primary-400">/&gt;</span>
+            <span className="text-primary-400">/></span>
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center space-x-8">
+          <ul className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <li key={item.name} className="relative group">
                 <Link
@@ -103,20 +103,20 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Improved design */}
           <button
-            className="md:hidden p-2 text-white hover:text-primary-400 transition-colors duration-300 focus:outline-none"
+            className="md:hidden relative p-3 text-white hover:text-primary-400 transition-colors duration-300 focus:outline-none bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:border-primary-400/30"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            <div className="relative w-6 h-6">
+            <div className="relative w-5 h-5">
               <FiMenu 
-                className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
+                className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
                   isOpen ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'
                 }`} 
               />
               <FiX 
-                className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
+                className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
                   isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
                 }`} 
               />
@@ -124,34 +124,36 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Improved styling */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
             isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <ul className="pt-6 pb-4 space-y-4">
-            {navItems.map((item, index) => (
-              <li 
-                key={item.name}
-                className={`transform transition-all duration-300 delay-${index * 100} ${
-                  isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
-                }`}
-              >
-                <Link
-                  to={item.path}
-                  onClick={handleNavClick}
-                  className={`block py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    location.pathname === item.path
-                      ? "text-primary-400 bg-dark-800"
-                      : "text-white hover:text-primary-400 hover:bg-dark-800"
+          <div className="mt-4 p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl">
+            <ul className="space-y-3">
+              {navItems.map((item, index) => (
+                <li 
+                  key={item.name}
+                  className={`transform transition-all duration-300 delay-${index * 100} ${
+                    isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
                   }`}
                 >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  <Link
+                    to={item.path}
+                    onClick={handleNavClick}
+                    className={`block py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 ${
+                      location.pathname === item.path
+                        ? "text-primary-400 bg-primary-400/10 border border-primary-400/20"
+                        : "text-white hover:text-primary-400 hover:bg-white/5 border border-transparent hover:border-white/10"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
