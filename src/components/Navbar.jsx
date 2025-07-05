@@ -72,9 +72,9 @@ const Navbar = () => {
             onClick={handleNavClick}
             className="text-2xl md:text-3xl font-bold text-white font-mono tracking-tight hover:text-primary-400 transition-colors duration-300"
           >
-            <span className="text-primary-400"><</span>
+            <span className="text-primary-400">{"<"}</span>
             Rheisan
-            <span className="text-primary-400">/></span>
+            <span className="text-primary-400">{"/>"}</span>
           </Link>
 
           {/* Desktop Navigation */}
