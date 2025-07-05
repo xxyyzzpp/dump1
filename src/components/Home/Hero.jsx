@@ -72,8 +72,8 @@ const Hero = () => {
           
           {/* Text Content */}
           <div className="space-y-8 text-center lg:text-left order-2 lg:order-1" data-aos="fade-up">
-            {/* Status Indicator */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:border-primary-400/30 transition-all duration-300">
+            {/* Status Indicator - Fixed positioning */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:border-primary-400/30 transition-all duration-300 mb-6">
               <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse" />
               <span className="text-sm font-medium text-gray-300">Available for opportunities</span>
             </div>
