@@ -46,15 +46,28 @@ const Hero = () => {
     }
   ];
 
-  return (
-    <section className="min-h-screen bg-dark-950 text-white relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-float" />
-      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-float" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-3/4 right-1/3 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-3 animate-float" style={{ animationDelay: '4s' }} />
+  const handleCvDownload = (url) => {
+    window.open(url, "_blank");
+    setShowCvOptions(false);
+  };
 
-      <div className="relative z-10 container-custom min-h-screen flex items-center">
+  return (
+    <section className="h-screen bg-gradient-to-br from-slate-950 via-gray-950 to-zinc-950 text-white relative overflow-hidden flex items-center">
+      {/* Modern Background Elements */}
+      <div className="absolute inset-0">
+        {/* Geometric shapes */}
+        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-primary-400/10 to-transparent rounded-full blur-xl animate-float" />
+        <div className="absolute top-40 right-32 w-24 h-24 bg-gradient-to-br from-emerald-400/10 to-transparent rounded-full blur-lg animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-32 left-40 w-40 h-40 bg-gradient-to-br from-purple-400/10 to-transparent rounded-full blur-2xl animate-float" style={{ animationDelay: '4s' }} />
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-slate-950/30" />
+      </div>
+
+      <div className="relative z-10 container-custom h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
           
           {/* Text Content */}
@@ -118,24 +131,20 @@ const Hero = () => {
                 {/* CV Options Dropdown */}
                 {showCvOptions && (
                   <div className="absolute top-full mt-3 left-0 right-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-2xl overflow-hidden z-20" data-aos="fade-up">
-                    <a
-                      href="https://drive.google.com/file/d/1f1fHKtctvOB08XRULSphumiOqxujuYYs/view?usp=drive_link"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 px-6 py-4 text-sm hover:bg-white/10 transition-colors border-b border-white/10"
+                    <button
+                      onClick={() => handleCvDownload("https://drive.google.com/file/d/1f1fHKtctvOB08XRULSphumiOqxujuYYs/view?usp=drive_link")}
+                      className="flex items-center gap-3 px-6 py-4 text-sm hover:bg-white/10 transition-colors border-b border-white/10 w-full text-left"
                     >
                       <span className="text-lg">🇮🇩</span>
                       Indonesian CV
-                    </a>
-                    <a
-                      href="https://drive.google.com/file/d/1ckouvnjbd1d0-ZPQzwi_7e1QP68w3E-L/view?usp=drive_link"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 px-6 py-4 text-sm hover:bg-white/10 transition-colors"
+                    </button>
+                    <button
+                      onClick={() => handleCvDownload("https://drive.google.com/file/d/1ckouvnjbd1d0-ZPQzwi_7e1QP68w3E-L/view?usp=drive_link")}
+                      className="flex items-center gap-3 px-6 py-4 text-sm hover:bg-white/10 transition-colors w-full text-left"
                     >
                       <span className="text-lg">🇺🇸</span>
                       English CV
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>
@@ -178,19 +187,12 @@ const Hero = () => {
                 <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-300 rounded-2xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '1s' }}>
                   <FaCode className="w-6 h-6 text-dark-950" />
                 </div>
-                <div className="absolute -bottom-6 -left-6 w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-400 rounded-xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '2s' }}>
+                <div className="absolute -bottom-6 -left-6 w-10 h-10 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '2s' }}>
                   <FaRocket className="w-5 h-5 text-white" />
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-400/50 rounded-full flex justify-center backdrop-blur-sm">
-          <div className="w-1 h-3 bg-primary-400 rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

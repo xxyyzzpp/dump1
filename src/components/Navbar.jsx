@@ -60,7 +60,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? "backdrop-blur-glass border-b border-dark-700 py-4" 
+          ? "bg-dark-950/90 backdrop-blur-xl border-b border-dark-700/50 py-4" 
           : "bg-transparent py-6"
       }`}
     >
@@ -72,9 +72,9 @@ const Navbar = () => {
             onClick={handleNavClick}
             className="text-2xl md:text-3xl font-bold text-white font-mono tracking-tight hover:text-primary-400 transition-colors duration-300"
           >
-            <span className="text-primary-400">&lt;</span>
+            <span className="text-primary-400"><</span>
             Rheisan
-            <span className="text-primary-400">/&gt;</span>
+            <span className="text-primary-400">/></span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -105,7 +105,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white hover:text-primary-400 transition-colors duration-300 focus:outline-none"
+            className="md:hidden p-2 text-white hover:text-primary-400 transition-colors duration-300 focus:outline-none relative z-50"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -130,28 +130,30 @@ const Navbar = () => {
             isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <ul className="pt-6 pb-4 space-y-4">
-            {navItems.map((item, index) => (
-              <li 
-                key={item.name}
-                className={`transform transition-all duration-300 delay-${index * 100} ${
-                  isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
-                }`}
-              >
-                <Link
-                  to={item.path}
-                  onClick={handleNavClick}
-                  className={`block py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    location.pathname === item.path
-                      ? "text-primary-400 bg-dark-800"
-                      : "text-white hover:text-primary-400 hover:bg-dark-800"
+          <div className="absolute top-full left-0 right-0 bg-dark-950/95 backdrop-blur-xl border-b border-dark-700/50 shadow-2xl">
+            <ul className="container-custom py-6 space-y-4">
+              {navItems.map((item, index) => (
+                <li 
+                  key={item.name}
+                  className={`transform transition-all duration-300 delay-${index * 100} ${
+                    isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
                   }`}
                 >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  <Link
+                    to={item.path}
+                    onClick={handleNavClick}
+                    className={`block py-3 px-4 rounded-lg text-sm font-medium transition-all duration-300 ${
+                      location.pathname === item.path
+                        ? "text-primary-400 bg-primary-400/10 border border-primary-400/20"
+                        : "text-white hover:text-primary-400 hover:bg-dark-800/50"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
