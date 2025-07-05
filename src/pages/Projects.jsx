@@ -6,7 +6,7 @@ import Modal from "../components/projects/Modal";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { projects } from "../data/projects";
-import { FaRocket, FaCode, FaSearch } from "react-icons/fa";
+import { FaRocket, FaCode, FaSearch, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 const Projects = () => {
   const [selectedTag, setSelectedTag] = useState("All");
@@ -30,6 +30,36 @@ const Projects = () => {
   };
 
   const handleViewDetails = (project) => setSelectedProject(project);
+
+  const socialLinks = [
+    {
+      icon: FaLinkedin,
+      href: "https://www.linkedin.com/in/rheisanfrs",
+      label: "LinkedIn",
+      color: "text-blue-400",
+      bgColor: "bg-blue-400/10",
+      borderColor: "border-blue-400/20",
+      hoverBorder: "hover:border-blue-400/40"
+    },
+    {
+      icon: FaGithub,
+      href: "https://github.com/rheikun",
+      label: "GitHub",
+      color: "text-gray-300",
+      bgColor: "bg-gray-400/10",
+      borderColor: "border-gray-400/20",
+      hoverBorder: "hover:border-gray-400/40"
+    },
+    {
+      icon: FaInstagram,
+      href: "https://www.instagram.com/rheisanfrs",
+      label: "Instagram",
+      color: "text-pink-400",
+      bgColor: "bg-pink-400/10",
+      borderColor: "border-pink-400/20",
+      hoverBorder: "hover:border-pink-400/40"
+    }
+  ];
 
   return (
     <div className="bg-dark-950 min-h-screen relative overflow-x-hidden">
@@ -120,14 +150,30 @@ const Projects = () => {
             )}
           </div>
 
-          {/* Call to Action */}
+          {/* Social Links Section */}
           <div className="text-center mt-20" data-aos="fade-up">
             <div className="max-w-2xl mx-auto p-8 bg-gradient-to-r from-dark-800/50 to-dark-700/50 backdrop-blur-sm border border-dark-600/50 rounded-2xl">
-              <h3 className="text-2xl font-bold text-white mb-4">Interested in Collaboration?</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">Connect With Me</h3>
               <p className="text-dark-300 mb-6">
-                I'm always excited to work on innovative projects and explore new technologies. 
-                Let's create something amazing together!
+                Follow my journey and stay updated with my latest projects and insights in AI and machine learning.
               </p>
+              
+              {/* Social Links */}
+              <div className="flex justify-center gap-4 mb-6">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`group p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl ${social.color} transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:border-primary-400/30`}
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
+                  </a>
+                ))}
+              </div>
+
               <a
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-400 to-primary-300 text-dark-950 rounded-xl font-bold hover:from-primary-300 hover:to-primary-200 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-primary-400/25"
