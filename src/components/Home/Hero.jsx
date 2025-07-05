@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaLinkedin, FaGithub, FaInstagram, FaDownload, FaEnvelope, FaRocket, FaCode } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaInstagram, FaDownload, FaEnvelope, FaRocket, FaCode, FaBrain, FaDatabase } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
@@ -18,15 +18,6 @@ const Hero = () => {
 
   const socialLinks = [
     {
-      icon: FaInstagram,
-      href: "https://www.instagram.com/rheisanfrs",
-      label: "Instagram",
-      color: "text-pink-400",
-      bgColor: "bg-pink-400/10",
-      borderColor: "border-pink-400/20",
-      hoverBorder: "hover:border-pink-400/40"
-    },
-    {
       icon: FaLinkedin,
       href: "https://www.linkedin.com/in/rheisanfrs",
       label: "LinkedIn",
@@ -43,18 +34,48 @@ const Hero = () => {
       bgColor: "bg-gray-400/10",
       borderColor: "border-gray-400/20",
       hoverBorder: "hover:border-gray-400/40"
+    },
+    {
+      icon: FaInstagram,
+      href: "https://www.instagram.com/rheisanfrs",
+      label: "Instagram",
+      color: "text-pink-400",
+      bgColor: "bg-pink-400/10",
+      borderColor: "border-pink-400/20",
+      hoverBorder: "hover:border-pink-400/40"
     }
   ];
 
   return (
-    <section className="min-h-screen bg-dark-950 text-white relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950" />
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-float" />
-      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-float" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-3/4 right-1/3 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-3 animate-float" style={{ animationDelay: '4s' }} />
+    <section className="h-screen bg-dark-950 text-white relative overflow-hidden">
+      {/* Unique Geometric Background */}
+      <div className="absolute inset-0">
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="grid grid-cols-12 h-full">
+            {Array.from({ length: 144 }).map((_, i) => (
+              <div key={i} className="border border-primary-400/20" />
+            ))}
+          </div>
+        </div>
+        
+        {/* Animated Geometric Shapes */}
+        <div className="absolute top-20 left-20 w-32 h-32 border-2 border-primary-400/30 rotate-45 animate-spin-slow" />
+        <div className="absolute top-40 right-32 w-24 h-24 bg-gradient-to-r from-primary-400/10 to-transparent rounded-full animate-pulse" />
+        <div className="absolute bottom-32 left-40 w-16 h-16 bg-blue-500/20 transform rotate-12 animate-bounce" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-20 right-20 w-20 h-20 border border-emerald-400/30 rounded-full animate-ping" style={{ animationDelay: '2s' }} />
+        
+        {/* Diagonal Lines */}
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-primary-400/20 to-transparent" />
+        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-400/20 to-transparent" />
+        
+        {/* Floating Code Elements */}
+        <div className="absolute top-1/4 left-1/3 text-primary-400/20 text-6xl font-mono animate-float">{'<>'}</div>
+        <div className="absolute bottom-1/3 right-1/4 text-blue-400/20 text-4xl font-mono animate-float" style={{ animationDelay: '3s' }}>AI</div>
+        <div className="absolute top-1/2 left-1/6 text-emerald-400/20 text-3xl font-mono animate-float" style={{ animationDelay: '1.5s' }}>ML</div>
+      </div>
 
-      <div className="relative z-10 container-custom min-h-screen flex items-center">
+      <div className="relative z-10 container-custom h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
           
           {/* Text Content */}
@@ -161,8 +182,8 @@ const Hero = () => {
           {/* Profile Image */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2" data-aos="fade-up" data-aos-delay="300">
             <div className="relative">
-              {/* Enhanced Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-300 rounded-full blur-3xl opacity-20 animate-pulse-glow" />
+              {/* Hexagonal Frame */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-300 rounded-full blur-2xl opacity-20 animate-pulse-glow" />
               
               {/* Image Container */}
               <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
@@ -174,23 +195,19 @@ const Hero = () => {
                   />
                 </div>
                 
-                {/* Floating Elements */}
+                {/* Tech Icons */}
                 <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-300 rounded-2xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '1s' }}>
                   <FaCode className="w-6 h-6 text-dark-950" />
                 </div>
                 <div className="absolute -bottom-6 -left-6 w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-400 rounded-xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '2s' }}>
-                  <FaRocket className="w-5 h-5 text-white" />
+                  <FaBrain className="w-5 h-5 text-white" />
+                </div>
+                <div className="absolute top-1/2 -right-8 w-8 h-8 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-lg flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '3s' }}>
+                  <FaDatabase className="w-4 h-4 text-white" />
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-400/50 rounded-full flex justify-center backdrop-blur-sm">
-          <div className="w-1 h-3 bg-primary-400 rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>
