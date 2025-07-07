@@ -14,23 +14,21 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-green-900 via-emerald-950 to-neutral-950 min-h-screen relative overflow-hidden">
+    <section className="relative bg-gradient-to-br from-green-900 via-emerald-950 to-neutral-950 text-white min-h-screen flex items-center overflow-hidden">
       {/* Background Elements */}
       <BackgroundElements />
       
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center">
-        <div className="container-custom w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Section */}
-            <LeftSection />
-            
-            {/* Right Section */}
-            <RightSection />
-          </div>
+      <div className="relative z-10 container-custom py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+          {/* Left Section - Content */}
+          <LeftSection />
+          
+          {/* Right Section - Image */}
+          <RightSection />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -38,14 +36,14 @@ const Hero = () => {
 const BackgroundElements = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-primary-400 rounded-full blur-3xl opacity-5 animate-float" />
-    <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-primary-300 rounded-full blur-3xl opacity-5 animate-float" style={{ animationDelay: '2s' }} />
-    <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-3 animate-float" style={{ animationDelay: '4s' }} />
+    <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary-300 rounded-full blur-3xl opacity-5 animate-float" style={{ animationDelay: '2s' }} />
+    <div className="absolute top-3/4 right-1/3 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-3 animate-float" style={{ animationDelay: '4s' }} />
   </div>
 );
 
 // Left Section Component
 const LeftSection = () => (
-  <div className="space-y-6 text-center lg:text-left" data-aos="fade-up">
+  <div className="space-y-6 text-center lg:text-left order-2 lg:order-1" data-aos="fade-up">
     <StatusBadge />
     <MainHeading />
     <TypewriterSection />
@@ -67,7 +65,7 @@ const StatusBadge = () => (
 const MainHeading = () => (
   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
     Hello, I'm
-    <span className="block bg-gradient-to-r from-primary-400 via-primary-300 to-primary-400 bg-clip-text text-transparent font-mono">
+    <span className="block bg-gradient-to-r from-primary-400 via-primary-300 to-primary-400 bg-clip-text text-transparent font-mono mt-2">
       Rheisan Firnandatama
     </span>
   </h1>
@@ -174,7 +172,7 @@ const SocialLinks = () => {
 
 // Right Section Component
 const RightSection = () => (
-  <div className="flex justify-center lg:justify-end" data-aos="fade-up" data-aos-delay="300">
+  <div className="flex justify-center lg:justify-end order-1 lg:order-2" data-aos="fade-up" data-aos-delay="300">
     <ProfileImage />
   </div>
 );
@@ -183,7 +181,7 @@ const RightSection = () => (
 const ProfileImage = () => (
   <div className="relative">
     <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-300 rounded-full blur-3xl opacity-20 animate-pulse-glow" />
-    <div className="relative w-60 h-60 md:w-64 md:h-64 lg:w-72 lg:h-72">
+    <div className="relative w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80">
       <div className="w-full h-full rounded-full overflow-hidden border-4 border-gradient-to-r from-primary-400 to-primary-300 shadow-2xl shadow-primary-400/20 hover:shadow-primary-400/30 transition-all duration-700">
         <img
           src="portfolio.gif"
