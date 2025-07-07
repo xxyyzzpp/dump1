@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FaLinkedin, FaGithub, FaInstagram,
-  FaDownload, FaEnvelope, FaCode, FaBrain, FaRocket
+  FaDownload, FaEnvelope, FaCode, FaBrain
 } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 const Hero = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
+  }, []);
+
   const socialLinks = [
     {
       icon: FaInstagram,
@@ -38,28 +44,35 @@ const Hero = () => {
   ];
 
   return (
-    <div className="space-y-16">
-      {/* Hero Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left Content */}
-        <div className="space-y-8 text-center lg:text-left" data-aos="fade-up">
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-400/10 text-primary-400 rounded-full border border-primary-400/20">
-            <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse" />
-            <span className="text-sm font-semibold">Available for opportunities</span>
-          </div>
+    <section className="relative bg-gradient-to-br from-green-900 via-emerald-950 to-neutral-950 text-white min-h-screen flex items-center">
+      {/* Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-primary-400 rounded-full blur-3xl opacity-5 animate-float" />
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-primary-300 rounded-full blur-3xl opacity-5 animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-3 animate-float" style={{ animationDelay: '4s' }} />
+      </div>
 
-          {/* Main Heading */}
-          <div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-white to-primary-400 bg-clip-text text-transparent">
+      {/* Content */}
+      <div className="relative z-10 container-custom py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-6 text-center lg:text-left" data-aos="fade-up">
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-3 px-6 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full hover:border-primary-400/30 transition-all duration-300">
+              <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-gray-300">Available for opportunities</span>
+            </div>
+
+            {/* Main Heading */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Hello, I'm
-              <span className="block text-primary-400 font-mono">
+              <span className="block bg-gradient-to-r from-primary-400 via-primary-300 to-primary-400 bg-clip-text text-transparent font-mono">
                 Rheisan Firnandatama
               </span>
             </h1>
-            
-            {/* Typewriter Effect */}
-            <div className="text-xl md:text-2xl font-bold text-primary-300 font-mono mb-6">
+
+            {/* Typewriter */}
+            <div className="text-xl md:text-2xl font-bold text-primary-300 font-mono">
               <Typewriter
                 words={["ML Engineer", "Data Scientist", "AI Enthusiast"]}
                 loop={true}
@@ -70,128 +83,78 @@ const Hero = () => {
                 delaySpeed={1500}
               />
             </div>
-          </div>
 
-          {/* Description */}
-          <p className="text-lg text-dark-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            I'm a Machine Learning Engineer based in Yogyakarta passionate about
-            <span className="text-primary-400 font-semibold"> Artificial Intelligence</span> and
-            <span className="text-primary-400 font-semibold"> Data Science</span>. I specialize in intelligent systems & ML workflows.
-          </p>
+            {/* Description */}
+            <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0" data-aos="fade-up" data-aos-delay="200">
+              I'm a Machine Learning Engineer based in Yogyakarta passionate about
+              <span className="text-primary-400 font-semibold"> Artificial Intelligence</span> and
+              <span className="text-primary-400 font-semibold"> Data Science</span>. I specialize in intelligent systems & ML workflows.
+            </p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Link
-              to="/contact"
-              className="group flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-400 to-primary-300 text-dark-950 rounded-xl font-bold hover:from-primary-300 hover:to-primary-200 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-primary-400/25"
-            >
-              <FaEnvelope className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              Get In Touch
-            </Link>
-            <button
-              onClick={() =>
-                window.open(
-                  "https://drive.google.com/file/d/1ckouvnjbd1d0-ZPQzwi_7e1QP68w3E-L/view?usp=drive_link",
-                  "_blank", "noopener,noreferrer"
-                )
-              }
-              className="group flex items-center justify-center gap-3 px-8 py-4 bg-dark-800/50 backdrop-blur-sm text-white rounded-xl font-bold hover:bg-dark-700/50 transition-all duration-300 border border-dark-700/50 hover:border-primary-400/30 hover:scale-105"
-            >
-              <FaDownload className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              Download CV
-            </button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex justify-center lg:justify-start gap-4">
-            {socialLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-3 rounded-xl border ${link.borderColor} ${link.bgColor} ${link.color} hover:scale-110 transition-all duration-300 ${link.hoverBorder} backdrop-blur-sm`}
-                aria-label={link.label}
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="400">
+              <Link
+                to="/contact"
+                className="group flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-300 text-dark-950 rounded-lg font-bold hover:from-primary-300 hover:to-primary-200 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-primary-400/25"
               >
-                <link.icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
-        </div>
+                <FaEnvelope className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                Get In Touch
+              </Link>
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1ckouvnjbd1d0-ZPQzwi_7e1QP68w3E-L/view?usp=drive_link",
+                    "_blank", "noopener,noreferrer"
+                  )
+                }
+                className="group flex items-center justify-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-sm text-white rounded-lg font-bold hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-primary-400/30 hover:scale-105"
+              >
+                <FaDownload className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                Download CV
+              </button>
+            </div>
 
-        {/* Right Content - Profile Image */}
-        <div className="flex justify-center lg:justify-end" data-aos="fade-up" data-aos-delay="300">
-          <div className="relative">
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-300 rounded-full blur-3xl opacity-20 animate-pulse-glow" />
-            
-            {/* Profile Container */}
-            <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-gradient-to-r from-primary-400 to-primary-300 shadow-2xl shadow-primary-400/20 hover:shadow-primary-400/30 transition-all duration-700">
-                <img
-                  src="portfolio.gif"
-                  alt="Rheisan Firnandatama"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              
-              {/* Floating Icons */}
-              <div className="absolute -top-6 -right-8 w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-300 rounded-xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '1s' }}>
-                <FaCode className="w-6 h-6 text-dark-950" />
-              </div>
-              <div className="absolute -bottom-6 -left-8 w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-400 rounded-xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '2s' }}>
-                <FaBrain className="w-6 h-6 text-white" />
+            {/* Social Links */}
+            <div className="flex justify-center lg:justify-start gap-4" data-aos="fade-up" data-aos-delay="500">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2 rounded-full border ${link.borderColor} ${link.bgColor} ${link.color} hover:scale-110 transition-transform ${link.hoverBorder}`}
+                  aria-label={link.label}
+                >
+                  <link.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Content - Profile Image */}
+          <div className="flex justify-center lg:justify-end" data-aos="fade-up" data-aos-delay="300">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-300 rounded-full blur-3xl opacity-20 animate-pulse-glow" />
+              <div className="relative w-60 h-60 md:w-64 md:h-64 lg:w-72 lg:h-72">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-gradient-to-r from-primary-400 to-primary-300 shadow-2xl shadow-primary-400/20 hover:shadow-primary-400/30 transition-all duration-700">
+                  <img
+                    src="portfolio.gif"
+                    alt="Rheisan Firnandatama"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="absolute -top-4 -right-6 w-10 h-10 bg-gradient-to-r from-primary-400 to-primary-300 rounded-xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '1s' }}>
+                  <FaCode className="w-5 h-5 text-dark-950" />
+                </div>
+                <div className="absolute -bottom-4 -left-6 w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-400 rounded-xl flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '2s' }}>
+                  <FaBrain className="w-5 h-5 text-white" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Quick Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="600">
-        <div className="text-center p-6 bg-gradient-to-br from-dark-900/50 to-dark-800/30 backdrop-blur-sm border border-dark-700/50 rounded-2xl hover:border-primary-400/30 transition-all duration-300 group">
-          <div className="text-3xl font-bold text-primary-400 font-mono mb-2 group-hover:scale-110 transition-transform duration-300">7th</div>
-          <div className="text-sm text-dark-400 font-medium">Semester</div>
-        </div>
-        
-        <div className="text-center p-6 bg-gradient-to-br from-dark-900/50 to-dark-800/30 backdrop-blur-sm border border-dark-700/50 rounded-2xl hover:border-primary-400/30 transition-all duration-300 group">
-          <div className="text-3xl font-bold text-primary-400 font-mono mb-2 group-hover:scale-110 transition-transform duration-300">6+</div>
-          <div className="text-sm text-dark-400 font-medium">Projects</div>
-        </div>
-        
-        <div className="text-center p-6 bg-gradient-to-br from-dark-900/50 to-dark-800/30 backdrop-blur-sm border border-dark-700/50 rounded-2xl hover:border-primary-400/30 transition-all duration-300 group">
-          <div className="text-3xl font-bold text-primary-400 font-mono mb-2 group-hover:scale-110 transition-transform duration-300">AI/ML</div>
-          <div className="text-sm text-dark-400 font-medium">Focus</div>
-        </div>
-        
-        <div className="text-center p-6 bg-gradient-to-br from-dark-900/50 to-dark-800/30 backdrop-blur-sm border border-dark-700/50 rounded-2xl hover:border-primary-400/30 transition-all duration-300 group">
-          <div className="text-3xl font-bold text-primary-400 font-mono mb-2 group-hover:scale-110 transition-transform duration-300">∞</div>
-          <div className="text-sm text-dark-400 font-medium">Learning</div>
-        </div>
-      </div>
-
-      {/* Call to Action */}
-      <div className="text-center max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="800">
-        <div className="p-8 bg-gradient-to-r from-dark-800/50 to-dark-700/50 backdrop-blur-sm border border-dark-600/50 rounded-2xl">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-primary-400/10 text-primary-400 rounded-xl flex items-center justify-center">
-              <FaRocket className="w-6 h-6" />
-            </div>
-            <h3 className="text-2xl font-bold text-white">Ready to Collaborate?</h3>
-          </div>
-          <p className="text-dark-300 leading-relaxed text-lg mb-6">
-            I'm always excited to work on innovative AI projects and explore new opportunities in machine learning and data science.
-          </p>
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary-400/10 text-primary-400 rounded-xl font-semibold hover:bg-primary-400/20 transition-all duration-300 border border-primary-400/20 hover:border-primary-400/40"
-          >
-            View My Work
-            <FaCode className="w-4 h-4" />
-          </Link>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 
